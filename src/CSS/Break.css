@@ -14,4 +14,30 @@
 body,html{
     width: 100%;
     height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    
+    background-image: url("../img/spaceblock.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gameCanvas{
+    width: 300px;
+    height: 500px;
+    margin-top: 90px;
+
+    border: 1px solid black;
+    background-color: black;
 }
