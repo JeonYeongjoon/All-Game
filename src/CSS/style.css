@@ -39,9 +39,9 @@ body,html{
 
 .mainMenu > input{
     margin: 100px;
-    width: 100px;
+    width: 120px;
     height: 40px;
-    border-radius: 50px;
+    border-radius: 60px;
     border: none;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2), 0 3px 6px 0 rgba(0,0,0,0.19);
 }
