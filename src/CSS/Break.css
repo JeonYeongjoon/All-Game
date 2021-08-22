@@ -38,6 +38,5 @@ body,html{
     height: 500px;
     margin-top: 90px;
 
-    border: 1px solid black;
-    background-color: #000000;
+    border: 10px solid black;
 }
