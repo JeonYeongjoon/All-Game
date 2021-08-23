@@ -20,6 +20,7 @@ function circle() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath(); // 공 그리기
+    console.log("hello");
 }
 
 // 패들
@@ -35,7 +36,7 @@ function paddle() {
 let bricks = [];
 for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
-    for(var r = 0; r < brickRowCount; r++) {
+    for(let r = 0; r < brickRowCount; r++) {
         bricks[c][r] = {x: 0, y: 0, status: Math.floor(Math.random() * 3)};
         totalBricks += bricks[c][r].status;
     }
@@ -43,8 +44,29 @@ for (let c = 0; c < brickColumnCount; c++) {
 
 // 벽돌 그리기
 function drawBricks() {
-    
+    for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; c++) {
+            if (bricks[c][r].status >= 1) { // 벽돌의 목숨이 1 이상일 때
+                let brickX = (c * (brickWidth+brickPadding))+brickOffsetLeft;
+                let brickY = (r * (brickHeight+brickPadding))+brickOffsetTop;
+
+                bricks[c][y].x = brickX;
+                bricks[c][r].y = brickY;
+
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                if (bricks[c][r].status == 2) {  // 벽돌의 목숨이 2일때
+                    ctx.fillStyle = "black";
+                } else { // 벽돌의 목숨이 1일때
+                    ctx.fillStyle = "gray";
+                }
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+    }
 }
+
 
 
 // 랜덤 함수
