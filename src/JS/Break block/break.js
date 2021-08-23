@@ -13,8 +13,8 @@ let brickColumnCount;
 let totalBricks;
 let lives;
 const paddleHeight = 10;
-const paddleWidth = 130;
-const paddleX = (canvas.width-paddleWidth)/2;
+const paddleWidth = 70;
+let paddleX = (canvas.width-paddleWidth)/2;
 
 // 공
 function circle() {
@@ -96,8 +96,18 @@ function getRendom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-circle();
-paddle();
-drawBricks();
-drawOverBlock();
-drawLive();
+setInterval(function() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    circle();
+    paddle();
+    drawBricks();
+    drawOverBlock();
+    drawLive();
+}, 20)
+    
+function move(event) {
+    paddleX = event.offsetX;
+    console.log(paddleX);
+}
+
+canvas.addEventListener('mousemove', move);
