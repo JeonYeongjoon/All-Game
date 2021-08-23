@@ -31,6 +31,23 @@ function paddle() {
     ctx.closePath();
 }
 
+// 벽돌 객체 생성
+let bricks = [];
+for (let c = 0; c < brickColumnCount; c++) {
+    bricks[c] = [];
+    for(var r = 0; r < brickRowCount; r++) {
+        bricks[c][r] = {x: 0, y: 0, status: Math.floor(Math.random() * 3)};
+        totalBricks += bricks[c][r].status;
+    }
+}
+
+// 벽돌 그리기
+function drawBricks() {
+    
+}
+
+
+// 랜덤 함수
 function getRendom(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
