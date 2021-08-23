@@ -9,6 +9,7 @@ canvas.height = 550;
 let circleX = getRendom(100, 700);
 let circleY = getRendom(250, 500);
 let radius = 10;
+let brickColumnCount;
 const paddleHeight = 10;
 const paddleWidth = 130;
 const paddleX = (canvas.width-paddleWidth)/2;
@@ -20,7 +21,6 @@ function circle() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath(); // 공 그리기
-    console.log("hello");
 }
 
 // 패들
@@ -78,3 +78,4 @@ function getRendom(min, max) {
 
 circle();
 paddle();
+drawBricks();
