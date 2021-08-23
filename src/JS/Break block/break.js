@@ -10,6 +10,8 @@ let circleX = getRendom(100, 700);
 let circleY = getRendom(250, 500);
 let radius = 10;
 let brickColumnCount;
+let totalBricks;
+let lives;
 const paddleHeight = 10;
 const paddleWidth = 130;
 const paddleX = (canvas.width-paddleWidth)/2;
@@ -23,6 +25,12 @@ function circle() {
     ctx.closePath(); // 공 그리기
 }
 
+// 공 움직임
+function ballDraw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // from x, from y, to x, to y
+}
+
+
 // 패들
 function paddle() {
     ctx.beginPath();
@@ -34,28 +42,28 @@ function paddle() {
 
 // 벽돌 객체 생성
 let bricks = [];
-for (let c = 0; c < brickColumnCount; c++) {
-    bricks[c] = [];
-    for(let r = 0; r < brickRowCount; r++) {
-        bricks[c][r] = {x: 0, y: 0, status: Math.floor(Math.random() * 3)};
-        totalBricks += bricks[c][r].status;
+for (let i = 0; i < brickColumnCount; i++) {
+    bricks[i] = [];
+    for(let j = 0; j < brickRowCount; j++) {
+        bricks[i][j] = {x: 0, y: 0, status: Math.floor(Math.random() * 3)};
+        totalBricks += bricks[i][j].status;
     }
 }
 
 // 벽돌 그리기
 function drawBricks() {
-    for (let c = 0; c < brickColumnCount; c++) {
-        for (let r = 0; r < brickRowCount; c++) {
-            if (bricks[c][r].status >= 1) { // 벽돌의 목숨이 1 이상일 때
-                let brickX = (c * (brickWidth+brickPadding))+brickOffsetLeft;
-                let brickY = (r * (brickHeight+brickPadding))+brickOffsetTop;
+    for (let i = 0; i < brickColumnCount; i++) {
+        for (let j = 0; j < brickRowCount; j++) {
+            if (bricks[i][j].status >= 1) { // 벽돌의 목숨이 1 이상일 때
+                let brickX = (i * (brickWidth+brickPadding))+brickOffsetLeft;
+                let brickY = (j * (brickHeight+brickPadding))+brickOffsetTop;
 
-                bricks[c][y].x = brickX;
-                bricks[c][r].y = brickY;
+                bricks[i][j].x = brickX;
+                bricks[i][j].y = brickY;
 
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                if (bricks[c][r].status == 2) {  // 벽돌의 목숨이 2일때
+                if (bricks[i][j].status == 2) {  // 벽돌의 목숨이 2일때
                     ctx.fillStyle = "black";
                 } else { // 벽돌의 목숨이 1일때
                     ctx.fillStyle = "gray";
@@ -67,7 +75,19 @@ function drawBricks() {
     }
 }
 
+// 남은 벽돌 갯수
+function drawOverBlock() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("남은 갯수: " + totalBricks, 8, 20); // text, x좌표, y좌표
+}
 
+// 남은 생명
+function drawLive() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+}
 
 // 랜덤 함수
 function getRendom(min, max) {
@@ -79,3 +99,5 @@ function getRendom(min, max) {
 circle();
 paddle();
 drawBricks();
+drawOverBlock();
+drawLive();
