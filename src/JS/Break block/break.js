@@ -16,6 +16,19 @@ const paddleHeight = 10;
 const paddleWidth = 70;
 let paddleX = (canvas.width-paddleWidth)/2;
 
+// 벽돌 선언
+let bricks = [];
+let brickX = [];
+let brickY = [];
+for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 4; j++) {
+        bricks[i] = [];
+    }
+    for (let j = 0; j < 4; j++) {
+        bricks[i][j] = true;
+    }
+}
+
 // 공
 function circle() {
     ctx.beginPath();
@@ -38,41 +51,6 @@ function paddle() {
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
-}
-
-// 벽돌 객체 생성
-let bricks = [];
-for (let i = 0; i < brickColumnCount; i++) {
-    bricks[i] = [];
-    for(let j = 0; j < brickRowCount; j++) {
-        bricks[i][j] = {x: 0, y: 0, status: Math.floor(Math.random() * 3)};
-        totalBricks += bricks[i][j].status;
-    }
-}
-
-// 벽돌 그리기
-function drawBricks() {
-    for (let i = 0; i < brickColumnCount; i++) {
-        for (let j = 0; j < brickRowCount; j++) {
-            if (bricks[i][j].status >= 1) { // 벽돌의 목숨이 1 이상일 때
-                let brickX = (i * (brickWidth+brickPadding))+brickOffsetLeft;
-                let brickY = (j * (brickHeight+brickPadding))+brickOffsetTop;
-
-                bricks[i][j].x = brickX;
-                bricks[i][j].y = brickY;
-
-                ctx.beginPath();
-                ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                if (bricks[i][j].status == 2) {  // 벽돌의 목숨이 2일때
-                    ctx.fillStyle = "black";
-                } else { // 벽돌의 목숨이 1일때
-                    ctx.fillStyle = "gray";
-                }
-                ctx.fill();
-                ctx.closePath();
-            }
-        }
-    }
 }
 
 // 남은 벽돌 갯수
