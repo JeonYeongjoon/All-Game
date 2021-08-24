@@ -9,12 +9,12 @@ canvas.height = 550;
 let circleX = getRendom(100, 700);
 let circleY = getRendom(250, 500);
 let radius = 10;
-let brickColumnCount;
-let totalBricks;
-let lives;
 let speed = 0.005;
 let speedX = 5;
 let speedY = 5;
+let playerX = 175;
+let playerY = 525;
+let totalBricks;
 
 let game = false;
 let death = false;
@@ -29,7 +29,7 @@ let bricks = [];
 let brickX = [];
 let brickY = [];
 for (let i = 0; i < 2; i++) {
-    for (let j = 0; j < 3; j++) {
+    for (let j = 0; j < 5; j++) {
         bricks[i] = [];
     }
     for (let j = 0; j < 4; j++) {
@@ -53,18 +53,18 @@ function circle() {
     ctx.closePath(); 
 
     if (game && !death) { 
-        if (circleX -radius < 0 || circleX + radius > canvas.width) { 
+        if (circleX - radius < 0 || circleX + radius > canvas.width) { 
             speedX *= -1;
         }
         if (circleY - radius < 0) {
             speedY *= -1;
         } // 벽에 튕겼을 때
-        if (circleY + radius > playerY && circleX + radius > playerX && circleX - radius < playerX + 250){
+        if (circleY + radius > playerY && circleX + radius > playerX && circleX - radius < playerX + 125){
             speedY *= -1;
         }
         // 벽돌에 튕겼을 때
         for (let i = 0; i < 2; i++) { 
-            for (let j = 0; j < 3; j++) {
+            for (let j = 0; j < 5; j++) {
                 if (circleY - radius < j * 50 + 50 && circleY + radius > j * 50 + 10 && circleX + radius > i * 185 + 10 && circleX - radius < i * 185 + 185) {
                     if (circleY - 10 < j * 50 + 50 && circleY - 10 > j * 50 + 10) {
                         if (bricks[i][j]) {
@@ -81,13 +81,14 @@ function circle() {
             }
         } // 공이 벽돌에 튕겼을 때
         if (circleY + radius > canvas.height) {
-            if (!death) {
+            if (!death) { // 다시 시작
+                alert("죽었습니다");
                 location.reload;
-            } // 다시 시작
+            } // 죽었을 때
             death = true;
             game = flase;
             circleY = canvas.height - radius;
-        } // 죽었을 때
+        } 
     }
     if (!death) {
         circleY += speedY;
@@ -119,12 +120,12 @@ function paddle() {
 // 벽돌
 function brick() {
     for (let i = 0; i < 2; i++) {
-        for (let j = 0; j < 3; j++) {
+        for (let j = 0; j < 5; j++) {
             brickX[i] = i * 185;
             brickY[j] = j * 50 + 30;
             if (!bricks[i][j]) { // 점수
-                totalBricks++;
-                if (num == 6) { // 블럭을 다 맞췄을때
+                totalBricks;
+                if (totalBricks == 6) { // 블럭을 다 맞췄을때
                     let input = confirm("축하드립니다!!!\n다시 시작하겠습니까?");
                     if (input) {
                         location.reload();
@@ -157,22 +158,33 @@ function brick() {
 function drawOverBlock() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("남은 갯수: " + totalBricks, 8, 20); // text, x좌표, y좌표
+    ctx.fillText("남은 벽돌 갯수: " + totalBricks, 8, 20); // text, x좌표, y좌표
 }
 
-// 남은 생명
-function drawLive() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "white";
-    ctx.fillText("Lives: "+lives, canvas.width-120, 20);
+// 게임 시작
+/*
+function start() {
+    if (!game && !death) {
+        game = true;
+        switch (getRendom(1, 2)) { // 처음 공 방향 랜덤
+            case 1:
+                speedX *= 1;
+                speedY *= 1;
+                break;
+            case 2:
+                speedX *= -1;
+                speedY *= 1;
+                break;
+        }
+    }
 }
+*/
 
 setInterval(function() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
     circle();
     paddle();
     drawOverBlock();
-    drawLive();
     brick();
 }, 20)
     
@@ -181,3 +193,4 @@ function move(event) {
 }
 
 canvas.addEventListener('mousemove', move);
+canvas.addEventListener('click', start);
