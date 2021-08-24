@@ -52,22 +52,60 @@ function circle() {
     ctx.fill();
     ctx.closePath(); 
 
-    if (game && !death) {
-        if (circleX -radius < 0 || circleX + radius > canvas.width) {
+    if (game && !death) { 
+        if (circleX -radius < 0 || circleX + radius > canvas.width) { 
             speedX *= -1;
         }
         if (circleY - radius < 0) {
             speedY *= -1;
-        } // 벽에 튕겼을때
-
+        } // 벽에 튕겼을 때
+        if (circleY + radius > playerY && circleX + radius > playerX && circleX - radius < playerX + 250){
+            speedY *= -1;
+        }
+        // 벽돌에 튕겼을 때
+        for (let i = 0; i < 2; i++) { 
+            for (let j = 0; j < 3; j++) {
+                if (circleY - radius < j * 50 + 50 && circleY + radius > j * 50 + 10 && circleX + radius > i * 185 + 10 && circleX - radius < i * 185 + 185) {
+                    if (circleY - 10 < j * 50 + 50 && circleY - 10 > j * 50 + 10) {
+                        if (bricks[i][j]) {
+                            speedX *= -1;
+                            circleX += speedX;
+                        }
+                    }                   
+                    if (bricks[i][j]) {
+                        speedY *= -1;
+                        circleY += speedY;
+                    } 
+                    bricks[i][j] = false;
+                }
+            }
+        } // 공이 벽돌에 튕겼을 때
+        if (circleY + radius > canvas.height) {
+            if (!death) {
+                location.reload;
+            } // 다시 시작
+            death = true;
+            game = flase;
+            circleY = canvas.height - radius;
+        } // 죽었을 때
+    }
+    if (!death) {
+        circleY += speedY;
+        circleX += speedX;
+        if (speedX > 0) {
+            speedX += speed;
+        }
+        else {
+            speedX -= speed;
+        }
+        if (speedY > 0) {
+            speed += speed;
+        }
+        else {
+            speedY -= speed;
+        }
     }
 }
-
-// 공 움직임
-function ballDraw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // from x, from y, to x, to y
-}
-
 
 // 패들
 function paddle() {
@@ -86,7 +124,7 @@ function brick() {
             brickY[j] = j * 50 + 30;
             if (!bricks[i][j]) { // 점수
                 totalBricks++;
-                if (num == 30) { // 블럭을 다 맞췄을때
+                if (num == 6) { // 블럭을 다 맞췄을때
                     let input = confirm("축하드립니다!!!\n다시 시작하겠습니까?");
                     if (input) {
                         location.reload();
