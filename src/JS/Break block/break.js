@@ -12,6 +12,9 @@ let radius = 10;
 let brickColumnCount;
 let totalBricks;
 let lives;
+let speed = 0.005;
+let speedX = 5;
+let speedY = 5;
 
 let game = false;
 let death = false;
@@ -25,8 +28,8 @@ let paddleX = (canvas.width-paddleWidth)/2;
 let bricks = [];
 let brickX = [];
 let brickY = [];
-for (let i = 0; i < 8; i++) {
-    for (let j = 0; j < 4; j++) {
+for (let i = 0; i < 2; i++) {
+    for (let j = 0; j < 3; j++) {
         bricks[i] = [];
     }
     for (let j = 0; j < 4; j++) {
@@ -42,12 +45,22 @@ function getRendom(min, max) {
 }
 
 // 공
-function circle() {
-    ctx.beginPath();
+function circle() { 
+    ctx.beginPath(); // 공 그리기
     ctx.arc(circleX, circleY, radius, 0, Math.PI*2); // x좌표, y좌표, 원 반지름, 그리는 방향
     ctx.fillStyle = "white";
     ctx.fill();
-    ctx.closePath(); // 공 그리기
+    ctx.closePath(); 
+
+    if (game && !death) {
+        if (circleX -radius < 0 || circleX + radius > canvas.width) {
+            speedX *= -1;
+        }
+        if (circleY - radius < 0) {
+            speedY *= -1;
+        } // 벽에 튕겼을때
+
+    }
 }
 
 // 공 움직임
@@ -67,13 +80,13 @@ function paddle() {
 
 // 벽돌
 function brick() {
-    for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 4; j++) {
-            brickX[i] = i * 185 + 10;
-            brickY[j] = j * 50 + 10;
+    for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 3; j++) {
+            brickX[i] = i * 185;
+            brickY[j] = j * 50 + 30;
             if (!bricks[i][j]) { // 점수
                 totalBricks++;
-                if (num == 32) { // 블럭을 다 맞췄을때
+                if (num == 30) { // 블럭을 다 맞췄을때
                     let input = confirm("축하드립니다!!!\n다시 시작하겠습니까?");
                     if (input) {
                         location.reload();
@@ -96,7 +109,7 @@ function brick() {
                         ctx.fillStyle = "rgb(0,0,128)";
                         break;
                 }
-                ctx.fillRect(brickX[i], brickY[j], 175, 40);
+                ctx.fillRect(brickX[i], brickY[j], 160, 40);
             }
         }
     }
@@ -113,7 +126,7 @@ function drawOverBlock() {
 function drawLive() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+    ctx.fillText("Lives: "+lives, canvas.width-120, 20);
 }
 
 setInterval(function() {
