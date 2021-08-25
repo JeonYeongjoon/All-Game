@@ -24,7 +24,7 @@ body,html{
     width: 100%;
     height: 100%;
 
-    background-image: url("../img/JumpDino.jpg");
+    background-image: url("../img/mungujeom.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,12 +35,5 @@ body,html{
 
 h1{
     margin-top: 50px;
-}
-
-#gameCanvas{
-    width: 570px;
-    height: 200px;
-    margin-top: 150px;
-    background-color: white;
-    border: 5px solid black;
+    color: white;
 }

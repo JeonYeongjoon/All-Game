@@ -7,7 +7,7 @@ function clickGame1() {
 }
 
 function clickGame2() {
-    location.href = "./DinoJump.html";
+    location.href = "./rspGame.html";
 }
 
 
