@@ -86,7 +86,7 @@ function circle() {
                 location.reload;
             } // 죽었을 때
             death = true;
-            game = true;
+            game = false;
             circleY = canvas.height - radius;
         } 
     }
@@ -140,23 +140,17 @@ function brick() {
 }
 
 // 남은 벽돌 갯수
-function drawOverBlock() {
+function blockPoint() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("점수: " + totalBricks, 8, 20); // text, x좌표, y좌표
 }
 
-// 게임 시작
-function start() {
-        game = true;
-}
-
 setInterval(function() {
-    start();
     ctx.clearRect(0,0,canvas.width,canvas.height);
     circle();
     paddle();
-    drawOverBlock();
+    blockPoint();
     brick();
 }, 20)
     
@@ -165,4 +159,3 @@ function move(event) {
 }
 
 canvas.addEventListener('mousemove', move);
-canvas.addEventListener('click', start);
