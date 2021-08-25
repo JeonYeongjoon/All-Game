@@ -10,7 +10,9 @@ function clickGame2() {
     location.href = "./rspGame.html";
 }
 
-
+function clickGame3() {
+    location.href = "./updown.html";
+}
 
 Game1.addEventListener("click", clickGame1);
 Game2.addEventListener("click", clickGame2);
