@@ -1,5 +1,6 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+const exit = document.getElementsByClassName("exit")[0];
 
 // 캔버스 크기
 canvas.width = 350;
@@ -158,4 +159,10 @@ function move(event) {
     paddleX = event.offsetX;
 }
 
+
+function onClickexit() {
+    location.href = "file:///C:/code/js/All-Game/src/html/index.html";
+}
+
 canvas.addEventListener('mousemove', move);
+exit.addEventListener('click', onClickexit);
