@@ -9,7 +9,7 @@ function clickGame1() {
 }
 
 function clickGame2() {
-    location.href = "";
+    location.href = "./DinoJump.html";
 }
 
 function clickGame3() {
@@ -29,4 +29,4 @@ Game1.addEventListener("click", clickGame1);
 Game2.addEventListener("click", clickGame2);
 Game3.addEventListener("click", clickGame3);
 Game4.addEventListener("click", clickGame4);
-Game5.addEventListener("click", G);
+Game5.addEventListener("click", clickGame5);
