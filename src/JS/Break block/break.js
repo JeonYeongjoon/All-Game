@@ -115,7 +115,7 @@ function brick() {
                 if (totalBricks == 8) { // 블럭을 다 맞췄을때
                     let input = confirm("축하드립니다!!!\n다시 시작하겠습니까?");
                     if (input) {
-                        location.reload();
+                        location.reload;
                     }
                     death = true;
                     game = false;
