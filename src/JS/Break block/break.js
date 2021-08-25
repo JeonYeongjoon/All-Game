@@ -10,19 +10,18 @@ let circleX = getRendom(100, 700);
 let circleY = getRendom(250, 500);
 let radius = 10;
 let speed = 0.005;
-let speedX = 5;
+let speedX = -5;
 let speedY = 5;
-let playerX = 175;
-let playerY = 525;
 let totalBricks;
 
-let game = false;
+let game = true;
 let death = false;
 
 const paddleHeight = 10;
 const paddleWidth = 70;
 
 let paddleX = (canvas.width-paddleWidth)/2;
+let paddleY = (canvas.height-paddleHeight);
 
 // 벽돌 선언
 let bricks = [];
@@ -52,14 +51,15 @@ function circle() {
     ctx.fill();
     ctx.closePath(); 
 
-    if (game && !death) { 
+    if (game && !death) { // 벽에 튕겼을때
+        console.log(circleX);
         if (circleX - radius < 0 || circleX + radius > canvas.width) { 
             speedX *= -1;
         }
         if (circleY - radius < 0) {
             speedY *= -1;
-        } // 벽에 튕겼을 때
-        if (circleY + radius > playerY && circleX + radius > playerX && circleX - radius < playerX + 125){
+        } 
+        if (circleY + radius > paddleY && circleX + radius > paddleX && circleX - radius < paddleX + 125){
             speedY *= -1;
         }
         // 벽돌에 튕겼을 때
@@ -86,32 +86,20 @@ function circle() {
                 location.reload;
             } // 죽었을 때
             death = true;
-            game = flase;
+            game = false;
             circleY = canvas.height - radius;
         } 
     }
     if (!death) {
         circleY += speedY;
         circleX += speedX;
-        if (speedX > 0) {
-            speedX += speed;
-        }
-        else {
-            speedX -= speed;
-        }
-        if (speedY > 0) {
-            speed += speed;
-        }
-        else {
-            speedY -= speed;
-        }
     }
 }
 
 // 패들
 function paddle() {
     ctx.beginPath();
-    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleWidth); // from x, from y, to x, to y 좌표
+    ctx.rect(paddleX, paddleY, paddleWidth, paddleWidth); // from x, from y, to x, to y 좌표
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
@@ -193,4 +181,4 @@ function move(event) {
 }
 
 canvas.addEventListener('mousemove', move);
-canvas.addEventListener('click', start);
+//canvas.addEventListener('click', start);
