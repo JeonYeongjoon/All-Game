@@ -15,3 +15,32 @@ body,html{
     width: 100%;
     height: 100%;
 }
+
+h1{
+    color: white;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    
+    background-image: url("../img/updownback.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitNum{
+    width: 250px;
+    height: 40px;
+    border-radius: 100px;
+}
