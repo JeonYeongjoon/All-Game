@@ -33,6 +33,23 @@ h1{
     align-items: center;
 }
 
+.highmenu{
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.highmenu > input{
+    width: 100px;
+    height: 40px;
+    margin-left: 50px;
+
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2), 0 3px 6px 0 rgba(0,0,0,0.19);
+}
+
 .submit{
     display: flex;
     justify-content: center;
