@@ -52,12 +52,19 @@ h1{
 }
 
 
-.bord{
+.board{
     height: 300px;
     margin-bottom: 40px;
+    color: white;
+    font-size: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     border: 4px dashed white;
 }
+
 
 .printrandom{
     width: 200px;
