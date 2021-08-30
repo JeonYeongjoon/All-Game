@@ -4,7 +4,9 @@ const board = document.getElementsByClassName("boardAi")[0];
 const randombtn = document.getElementsByClassName("randombtn")[0];
 const exit = document.getElementsByClassName("exit")[0];
 
-function rspRandom() {
+function rspRandom(event) {
+    event.preventDefault();
+    console.log("1");
     board.innerText = "가위 바위 보!";
 }
 
