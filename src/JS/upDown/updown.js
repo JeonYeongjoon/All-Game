@@ -1,7 +1,9 @@
 const exit = document.getElementsByClassName("exit")[0];
 const board = document.getElementsByClassName("board")[0];
 const clickrandom = document.getElementsByClassName("printrandom")[0];
+const submitNum = document.getElementsByClassName("submitNum")[0];
 
+const INPUT_NUM = "input";
 // random함수 최소,최대 값 정해주기
 const min = 0;
 const max = 100;
