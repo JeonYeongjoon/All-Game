@@ -20,6 +20,10 @@ h1{
     color: white;
 }
 
+p{
+    color: white;
+}
+
 .main{
     width: 100%;
     height: 100%;
@@ -34,7 +38,7 @@ h1{
 }
 
 .highmenu{
-    margin-top: 20px;
+    margin-top: 10px;
 
     display: flex;
     justify-content: space-between;
@@ -44,13 +48,12 @@ h1{
     width: 100px;
     height: 40px;
     margin-left: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 
     border-radius: 50px;
     border: none;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2), 0 3px 6px 0 rgba(0,0,0,0.19);
 }
-
 
 .board{
     height: 300px;
@@ -64,7 +67,6 @@ h1{
 
     border: 4px dashed white;
 }
-
 
 .printrandom{
     width: 200px;
