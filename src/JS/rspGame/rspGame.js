@@ -1,14 +1,21 @@
 const rsp = ["가위","바위","보"]
-const chosersp = rsp[Math.floor(Math.random() * rsp.length)];
 const boardAi = document.getElementsByClassName("boardAi")[0];
 const boardUser = document.getElementsByClassName("boardUser")[0];
 const randombtn = document.getElementsByClassName("randombtn")[0];
+const resetbtn = document.getElementsByClassName("reset")[0];
 
 const exit = document.getElementsByClassName("exit")[0];
 
 const rockbtn = document.getElementById("rock");
 const scissorbtn = document.getElementById("scissor"); 
 const paperbtn = document.getElementById("paper");
+
+let printrsp = randomValue(rsp);
+
+function randomValue(array) {
+    const random = Math.floor(Math.random() * array.length);
+    return array[random];
+}
 
 function rock() {
     boardUser.innerText = "바위";
@@ -22,10 +29,13 @@ function paper() {
     boardUser.innerText = "보";
 }
 
-function rspRandom(event) {
-    event.preventDefault();
+function rspRandom() {
     console.log("1");
     boardAi.innerText = "가위 바위 보!";
+}
+
+function reset() {
+    location.reload();
 }
 
 // 나가기 버튼
@@ -38,3 +48,4 @@ exit.addEventListener("click", onClickexit);
 rockbtn.addEventListener("click", rock);
 scissorbtn.addEventListener("click", scissor);
 paperbtn.addEventListener("click", paper);
+resetbtn.addEventListener("click", reset);

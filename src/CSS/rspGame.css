@@ -64,9 +64,26 @@ h1 {
     border: 4px dashed white;
 }
 
+.menubtn{
+    display: flex;
+    justify-content: space-between;
+}
+
 .randombtn{
     width: 100px;
     height: 50px;
+
+    display: flex;
+    justify-content: left;
+
+    border-radius: 50px;
+    padding-left: 10px;
+}
+
+.reset{
+    width: 100px;
+    height: 50px;
+    margin-left: 15px;
 
     display: flex;
     justify-content: left;
