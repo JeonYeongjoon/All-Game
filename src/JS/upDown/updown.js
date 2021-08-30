@@ -24,12 +24,10 @@ function print() {
     board.innerText = "1~100\n사이의 수";
 }
 
-
-
 // 숫자 비교
-function comparison(e) {
+function comparison() {
     // submitNum.value = input;
-    console.log(e.target.value);
+    console.log(submitNum.value);
 }
 
 clickrandom.addEventListener('click', print);
