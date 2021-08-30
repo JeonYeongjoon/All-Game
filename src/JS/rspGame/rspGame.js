@@ -1,30 +1,31 @@
-const images = ["0.jpg","1.jpg","2.jpg"]
-const choseImage = images[Math.floor(Math.random() * images.length)];
-const board = document.getElementsByClassName("boardAi")[0];
+const rsp = ["가위","바위","보"]
+const chosersp = rsp[Math.floor(Math.random() * rsp.length)];
+const boardAi = document.getElementsByClassName("boardAi")[0];
+const boardUser = document.getElementsByClassName("boardUser")[0];
 const randombtn = document.getElementsByClassName("randombtn")[0];
 
 const exit = document.getElementsByClassName("exit")[0];
 
-const rockbtn = document.getElementById("rock")[0];
-const scissorbtn = document.getElementById("scissor")[0]; 
-const paperbtn = document.getElementById("paper")[0];
+const rockbtn = document.getElementById("rock");
+const scissorbtn = document.getElementById("scissor"); 
+const paperbtn = document.getElementById("paper");
 
 function rock() {
-    
+    boardUser.innerText = "바위";
 }
 
 function scissor() {
-
+    boardUser.innerText = "가위";
 }
 
 function paper() {
-
+    boardUser.innerText = "보";
 }
 
 function rspRandom(event) {
     event.preventDefault();
     console.log("1");
-    board.innerText = "가위 바위 보!";
+    boardAi.innerText = "가위 바위 보!";
 }
 
 // 나가기 버튼
@@ -34,3 +35,6 @@ function onClickexit() {
 
 randombtn.addEventListener("click", rspRandom);
 exit.addEventListener("click", onClickexit);
+rockbtn.addEventListener("click", rock);
+scissorbtn.addEventListener("click", scissor);
+paperbtn.addEventListener("click", paper);

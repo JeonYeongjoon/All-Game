@@ -36,7 +36,22 @@ h1 {
 
 .boardAi{
     width: 400px;
-    height: 400px;
+    height: 200px;
+    font-size: 50px;
+
+    background-color: black;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 4px dashed white;
+}
+
+.boardUser{
+    width: 400px;
+    height: 200px;
     font-size: 50px;
 
     background-color: black;
