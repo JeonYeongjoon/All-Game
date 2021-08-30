@@ -34,17 +34,28 @@ h1 {
     color: white;
 }
 
-.AI{
+.boardAi{
     width: 400px;
     height: 400px;
     
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    color: white;
+
+    border: 4px dashed white;
+}
+
+.randombtn{
+    width: 100px;
+    height: 50px;
+
+    display: flex;
+    justify-content: left;
+
+    border-radius: 50px;
+    padding-left: 10px;
 }
 
 .button{
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .btn{
