@@ -81,13 +81,16 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .submitNum{
     width: 250px;
     height: 40px;
     border-radius: 100px;
-}
+    outline: none;
+    padding-left: 10px;
+} 
 
 .submitbut{
     width: 50px;

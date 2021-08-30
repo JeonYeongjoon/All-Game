@@ -3,7 +3,7 @@ const board = document.getElementsByClassName("board")[0];
 const clickrandom = document.getElementsByClassName("printrandom")[0];
 const submitNum = document.getElementsByClassName("submitNum")[0];
 
-const INPUT_NUM = "input";
+// const INPUT_NUM = input;
 // random함수 최소,최대 값 정해주기
 const min = 0;
 const max = 100;
@@ -24,14 +24,12 @@ function print() {
     board.innerText = "1~100\n사이의 수";
 }
 
-// 숫자 입력
-function input() {
 
-}
 
 // 숫자 비교
-function comparison() {
- 
+function comparison(e) {
+    // submitNum.value = input;
+    console.log(e.target.value);
 }
 
 clickrandom.addEventListener('click', print);
