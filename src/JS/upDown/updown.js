@@ -2,6 +2,7 @@ const exit = document.getElementsByClassName("exit")[0];
 const board = document.getElementsByClassName("board")[0];
 const clickrandom = document.getElementsByClassName("printrandom")[0];
 const submitNum = document.getElementsByClassName("submitNum")[0];
+const resetbtn = document.getElementsByClassName("reset")[0];
 
 // random함수 최소,최대 값 정해주기
 const min = 0;
@@ -23,6 +24,11 @@ function print() {
     board.innerText = "1~100\n사이의 수";
 }
 
+// 초기화 함수
+function reset() {
+    location.reload();
+}
+
 // 숫자 비교
 function comparison() {
     console.log(submitNum.value); // 램덤 숫자 확인
@@ -37,3 +43,4 @@ function comparison() {
 
 clickrandom.addEventListener('click', print);
 exit.addEventListener('click', onClickexit);
+resetbtn.addEventListener('click', reset);

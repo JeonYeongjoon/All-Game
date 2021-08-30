@@ -1,6 +1,7 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const exit = document.getElementsByClassName("exit")[0];
+const resetbtn = document.getElementsByClassName("reset")[0];
 
 // 캔버스 크기
 canvas.width = 350;
@@ -35,6 +36,11 @@ for (let i = 0; i < 2; i++) {
     for (let j = 0; j < 4; j++) {
         bricks[i][j] = true;
     }
+}
+
+// 초기화 함수
+function reset() {
+    location.reload();
 }
 
 // 랜덤 함수
@@ -166,3 +172,4 @@ function onClickexit() {
 
 canvas.addEventListener('mousemove', move);
 exit.addEventListener('click', onClickexit);
+resetbtn.addEventListener("click", reset);
