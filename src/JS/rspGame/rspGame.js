@@ -5,6 +5,7 @@ const exit = document.getElementsByClassName("exit")[0];
 
 bgImage.style.backgroundImage=`url('./img/${choseImage}')`;
 
+// 나가기 버튼
 function onClickexit() {
     location.href = "file:///C:/code/js/All-Game/src/html/index.html";
 }
