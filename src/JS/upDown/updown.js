@@ -3,10 +3,12 @@ const board = document.getElementsByClassName("board")[0];
 const clickrandom = document.getElementsByClassName("printrandom")[0];
 const submitNum = document.getElementsByClassName("submitNum")[0];
 const resetbtn = document.getElementsByClassName("reset")[0];
+const countNum = document.getElementsByClassName("count")[0];
 
-// random함수 최소,최대 값 정해주기
+// random함수 최소,최대 값 정해주기 및 카운트
 const min = 0;
 const max = 100;
+let countN = 1;
 
 // 랜덤 함수
 const randomNum = Math.random() * 100;
@@ -40,7 +42,10 @@ function comparison() {
     } else 
         board.innerText = "DOWN!";
     
+    countNum.innerText = `횟수: ${countN}`;    
+    countN++;
 }
+
 function enter(e){
     if(e.key==='Enter'){
         comparison();

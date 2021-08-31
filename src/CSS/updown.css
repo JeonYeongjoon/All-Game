@@ -68,6 +68,14 @@ p{
     border: 4px dashed white;
 }
 
+.count{
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .printrandom{
     width: 200px;
     height: 30px;
