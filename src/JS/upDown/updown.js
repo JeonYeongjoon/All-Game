@@ -39,8 +39,17 @@ function comparison() {
         board.innerText = "정답!";
     } else 
         board.innerText = "DOWN!";
+    
+}
+function enter(e){
+    if(e.key==='Enter'){
+        comparison();
+        submitNum.value="";
+        submitNum.focus();
+    }
 }
 
 clickrandom.addEventListener('click', print);
 exit.addEventListener('click', onClickexit);
 resetbtn.addEventListener('click', reset);
+window.addEventListener('keydown',enter);
