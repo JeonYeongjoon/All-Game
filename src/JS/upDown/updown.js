@@ -41,11 +41,12 @@ function comparison() {
         board.innerText = "정답!";
     } else 
         board.innerText = "DOWN!";
-    
+
     countNum.innerText = `횟수: ${countN}`;    
     countN++;
 }
 
+// 엔터키 및 포커스, 벨류 0
 function enter(e){
     if(e.key==='Enter'){
         comparison();
