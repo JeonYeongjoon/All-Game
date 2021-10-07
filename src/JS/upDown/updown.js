@@ -16,46 +16,44 @@ const randomNumFloor = Math.floor(randomNum);
 
 // 나가기 버튼
 function onClickexit() {
-    location.href = "file:///C:/code/js/All-Game/src/html/index.html";
+  location.href = "file:///C:/code/GameWorld/src/html/index.html";
 }
-
 
 // 숫자 프린트
 function print() {
-    console.log(randomNumFloor);
-    board.innerText = "1~100\n사이의 수";
+  console.log(randomNumFloor);
+  board.innerText = "1~100\n사이의 수";
 }
 
 // 초기화 함수
 function reset() {
-    location.reload();
+  location.reload();
 }
 
 // 숫자 비교
 function comparison() {
-    console.log(submitNum.value); // 램덤 숫자 확인
+  console.log(submitNum.value); // 램덤 숫자 확인
 
-    if (randomNumFloor > submitNum.value) {
-        board.innerText = "UP!";
-    } else if (randomNumFloor == submitNum.value) {
-        board.innerText = "정답!";
-    } else 
-        board.innerText = "DOWN!";
+  if (randomNumFloor > submitNum.value) {
+    board.innerText = "UP!";
+  } else if (randomNumFloor == submitNum.value) {
+    board.innerText = "정답!";
+  } else board.innerText = "DOWN!";
 
-    countNum.innerText = `횟수: ${countN}`;    
-    countN++;
+  countNum.innerText = `횟수: ${countN}`;
+  countN++;
 }
 
 // 엔터키 및 포커스, 벨류 0
-function enter(e){
-    if(e.key==='Enter'){
-        comparison();
-        submitNum.value="";
-        submitNum.focus();
-    }
+function enter(e) {
+  if (e.key === "Enter") {
+    comparison();
+    submitNum.value = "";
+    submitNum.focus();
+  }
 }
 
-clickrandom.addEventListener('click', print);
-exit.addEventListener('click', onClickexit);
-resetbtn.addEventListener('click', reset);
-window.addEventListener('keydown',enter);
+clickrandom.addEventListener("click", print);
+exit.addEventListener("click", onClickexit);
+resetbtn.addEventListener("click", reset);
+window.addEventListener("keydown", enter);
